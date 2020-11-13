@@ -1,0 +1,192 @@
+<script src="{{ site.paths.gh-pages }}/assets/libs/javascripts/jekyll-search.jquery.min.js"></script>
+<script src="{{ site.paths.gh-pages }}/assets/libs/javascripts/canvas_bg.min.js"></script>
+<script>
+    $(document).ready(function () {
+        let offset = 50,
+            duration = 500,
+            width = 960;
+
+        $(window).scroll(function () {
+            if ($(window).width() > width) {
+                if ($(this).scrollTop() > offset) {
+                    $('footer').css('top', '20px');
+                    $('footer .back-to-top').fadeIn(duration);
+                } else {
+                    $('footer').css('top', 'auto');
+                    $('footer .back-to-top').fadeOut(duration);
+                }
+            }
+        });
+
+        $(window).resize(function () {
+            if ($(window).width() < width) {
+                $('footer').css('top', 'auto');
+                $('footer .back-to-top').fadeOut(duration);
+            }
+            if ($(window).width() >= width && $(this).scrollTop() > offset) {
+                $('footer').css('top', '20px');
+                $('footer .back-to-top').fadeIn(duration);
+            }
+        });
+
+        $('footer .back-to-top, .gotop').on('click', function (event) {
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: 0
+            }, duration);
+            return false;
+        });
+
+        $('.show-hidden').on('click', function () {
+            $(this).parent().next().slideToggle("700");
+            $(this).remove();
+        });
+
+        let copyIcon = '<button class="btn-copy" data-tippy-content="Copy to clipboard"><i class="fas fa-clipboard"></i></button>';
+        $('figure.highlight').prepend(copyIcon);
+        $('div.highlight').prepend(copyIcon);
+
+        $('.search-field').simpleJekyllSearch({
+            jsonFile: '{{ site.baseurl }}{{ site.paths.blog }}search.json',
+            template: '<li><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></li>',
+            searchResults: '.search-wrapper .results',
+            searchResultsTitle: '<h4>{{ site.data.i18n[site.lang].search_results }}</h4>',
+            limit: '10',
+            noResults: '<p>{{ site.data.i18n[site.lang].search_not_found }}</p>'
+        });
+
+        let closeOverlay = function () {
+            $('.nav-wrapper, .search-wrapper').removeAttr('style');
+            $(".nav-form, .search-form").removeClass('active');
+            $(".search-form").find('input').val("");
+            $("body").removeClass('nav-overlay search-overlay');
+        };
+
+        $('.nav-global .btn-search').on('click', function () {
+            $('.search-wrapper').css({display: "block"});
+            $(".search-form").addClass('active');
+            $(".search-form").find('input').focus();
+            $("body").addClass('search-overlay');
+        });
+
+        $('.nav-global .btn-menu').on('click', function () {
+            $('.nav-wrapper').css({display: "block"});
+            $(".nav-form").addClass('active');
+            $(".nav-form .search-field").prop('disabled', true);
+            $("body").addClass('nav-overlay');
+        });
+
+        $('.nav-wrapper .btn-close, .search-wrapper .btn-close').on('click', function () {
+            closeOverlay();
+        });
+
+        $("img").each(function () {
+            if ($(this).attr('data-src')) {
+                $(this).attr('src', $(this).attr('data-src'));
+            }
+        });
+
+        $("img").bind("error", function () {
+            $(this).attr("src", "{{ '/assets/images/theme/err-img.svg' | prepend: site.paths.gh-pages }}");
+            $(this).css("width", "50px");
+        });
+    });
+</script>
+<!--图片放大插件-->
+<script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+<!--通知插件-->
+<script src="//cdn.jsdelivr.net/npm/noty/lib/noty.min.js"></script>
+<script>
+    /*图片放大插件*/
+    $("head").append('<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox/dist/jquery.fancybox.min.css"/>');
+    /*通知插件*/
+    $("head").append('<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/noty/lib/noty.min.css"/>');
+    $("head").append('<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/noty/lib/themes/metroui.min.css"/>');
+    $('[data-fancybox="post-image"]').fancybox({
+        afterLoad: function (instance, current) {
+            let pixelRatio = window.devicePixelRatio || 1;
+
+            if (pixelRatio > 1.5) {
+                current.width = current.width / pixelRatio;
+                current.height = current.height / pixelRatio;
+            }
+        },
+        buttons: [
+            "slideShow",
+            "fullScreen",
+            "thumbs",
+            "download",
+            "arrowLeft",
+            "arrowRight",
+            "close"
+        ],
+        loop: false,
+        animationEffect: "zoom-in-out",
+        transitionEffect: "zoom-in-out",
+        keyboard: true,
+        infobar: true,
+        arrows: true,
+        thumbs: {
+            autoStart: false
+        }
+    });
+
+    $(document).ready(function () {
+        $("figure.highlight, div.highlight").on("click", '.btn-copy', function () {
+            let codeblock = $(this).parent().find('pre code table tr').eq(0).find("td").eq(1).find("pre")[0] || $(this).parent().find('pre code')[0];
+            let copyResult = copyToClipboard(codeblock.textContent);
+            if (copyResult) {
+                noty('metroui', 'alert', '代码复制成功', 2000);
+            } else {
+                noty('metroui', 'error', '代码复制失败', 2000);
+            }
+        });
+    });
+
+    /**
+     * 新建通知
+     * @param theme
+     * @param type - alert, success, error, warning, info
+     * @param text
+     * @param time
+     */
+    function noty(theme, type, text, time) {
+        new Noty({
+            theme: theme,
+            type: type,
+            text: text,
+            callbacks: {
+                afterShow: function () {
+                    setTimeout(() => {
+                        this.close();
+                    }, time);
+                }
+            }
+        }).show();
+    }
+
+    /**
+     * 复制代码到剪切板
+     * @param text
+     * @returns {boolean|void}
+     */
+    function copyToClipboard(text) {
+        if (window.clipboardData && window.clipboardData.setData) {
+            return window.clipboardData.setData("Text", text);
+        } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+            let textarea = document.createElement("textarea");
+            textarea.textContent = text;
+            textarea.style.position = "fixed";
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                return document.execCommand("copy");
+            } catch (ex) {
+                console.warn("Copy to clipboard failed.", ex);
+                return false;
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+    }
+</script>

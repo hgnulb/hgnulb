@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+<!--[if IE]>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<meta name="keywords" content="{% if site.author.name %}{{ site.author.name }},{% endif %}{% if page.tags != null %}{{ page.tags | join: ',' }}{% else %}{{ site.keywords }}{% endif %}"/>
+{% if page.url == "/404.html" %}
+<meta http-equiv="refresh" content="5; url={{ site.paths.blog | relative_url | prepend: site.url }}">
+{% endif %}
+{% if page.indexing == false %}
+<meta name="robots" content="noindex">
+{% endif %}{% seo %}
+<link rel="shortcut icon" href="{{ '/assets/images/theme/favicon.svg' | prepend: site.baseurl | prepend: site.url }}" type="image/x-icon">
+<link rel="icon" href="{{ '/assets/images/theme/favicon.svg' | prepend: site.baseurl | prepend: site.url }}" type="image/x-icon">

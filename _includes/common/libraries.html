@@ -1,0 +1,43 @@
+<script src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/modernizr/modernizr/modernizr.min.js"></script>
+<!--顶部进度条-->
+<script src="//cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script>
+<!--Tippy.js插件-->
+<script src="//cdn.jsdelivr.net/npm/@popperjs/core/dist/umd/popper.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+<script>
+    /*字体图标*/
+    $("head").append('<link rel="stylesheet" href="{{ site.baseurl }}/assets/libs/fontawesome/css/all.min.css"/>');
+    /*Tippy.js插件*/
+    $("head").append('<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/tippy.js/animations/scale.min.css"/>');
+    $("head").append('<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/tippy.js/themes/translucent.min.css"/>');
+
+    $(document).ready(function () {
+        tippy('[data-tippy-content]', {
+            theme: 'translucent',
+            animation: 'scale',
+            inertia: true,
+        });
+        removeAnchorPoint();
+    });
+
+    function removeAnchorPoint() {
+        let toc = $("#markdown-toc").find("a");
+        if (toc.length > 0) {
+            toc.each(function () {
+                let id = $(this).attr("href");
+                $(this).attr("href", "javascript:void(0);");
+                $(this).attr("onclick", "changePoint('" + id + "', '" + id + "');");
+            });
+        }
+    }
+
+    function changePoint(url, id) {
+        let target = document.getElementById(id.replace('#', ''));
+        if (target == null || target == undefined) {
+            document.location.href = url;
+        } else {
+            target.scrollIntoView(true);
+        }
+    }
+</script>

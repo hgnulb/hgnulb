@@ -1,0 +1,13 @@
+{% if categories_list.first[0] == null %}{% for category in categories_list %}{% assign actual_category_name = category | replace:'&#32;',' ' %}
+    <div>
+        <a onclick="changePoint('{{ site.paths.categories | relative_url | prepend: site.url }}', '#{{ actual_category_name | replace:' ','-' | replace:'#','sharp' }}')" data-tippy-content="{{ actual_category_name }}">
+            <button>{{ actual_category_name }}&nbsp;<span>{{ site.categories[actual_category_name].size }}</span></button>
+        </a>
+    </div>
+{% endfor %}{% else %}{% for category in categories_list %}{% assign actual_category_name = tag[0] | replace:'&#32;',' ' %}
+    <div>
+        <a onclick="changePoint('{{ site.paths.categories | relative_url | prepend: site.url }}', '#{{ actual_category_name | replace:' ','-' | replace:'#','sharp' }}')" data-tippy-content="{{ actual_category_name }}">
+            <button>{{ actual_category_name }}&nbsp;<span>{{ category[1].size }}</span></button>
+        </a>
+    </div>
+{% endfor %}{% endif %}{% assign categories_list = nil %}

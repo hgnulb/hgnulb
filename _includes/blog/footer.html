@@ -1,0 +1,18 @@
+<footer class="the-footer">
+    <div class="unit-inner">
+        <h4><a href="{{ site.baseurl | prepend: site.url }}/">{{ site.data.i18n[site.lang].about }}</a></h4>
+        <p>Copyright ©2017-{{ site.time | date: '%Y' }} {{ site.title }} All rights reserved</p>
+        <p>
+            {% if site.busuanzi.enable %}<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            {% if site.busuanzi.page_pv %}<span id="busuanzi_container_page_pv">{{ site.busuanzi.page_pv_header }}&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;{{ site.busuanzi.page_pv_footer }}</span>{% endif %}
+            {% if site.busuanzi.site_pv %}<span id="busuanzi_container_site_pv">{{ site.busuanzi.site_pv_header }}&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;{{ site.busuanzi.site_pv_footer }}</span>{% endif %}
+            {% if site.busuanzi.site_uv %}<span id="busuanzi_container_site_uv">{{ site.busuanzi.site_uv_header }}&nbsp;<span id="busuanzi_value_site_uv"></span>&nbsp;{{ site.busuanzi.site_uv_footer }}</span>{% endif %}{% endif %}
+        </p>
+        <p><small>Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> 💖 Theme <a href="https://github.com/yizeng/jekyll-theme-simple-texture" target="_blank">Simple Texture</a></small></p>
+    </div>
+    <div class="social-links">
+        {% if site.author.email %}<a class="ico-gmail" href="mailto:{{ site.author.email }}" rel="me" target="_blank" data-tippy-content="email"></a>{% endif %}{% for link in site.author.social_links %}
+        {% if link.url %}<a class="ico-{{ link.name }}" href="{{ link.url }}" rel="me" target="_blank" data-tippy-content="{{ link.name }}"></a>{% endif %}{% endfor %}
+    </div>
+    <button class="back-to-top"><i class="fas fa-arrow-alt-circle-up fa-3x"></i></button>
+</footer>

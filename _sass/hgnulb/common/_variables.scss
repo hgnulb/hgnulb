@@ -1,0 +1,24 @@
+$github-url: 'https://cdn.jsdelivr.net/gh/hgnulb/hgnulb@gh-pages' !default;
+$blog-fonts-body: "Microsoft YaHei", sans-serif, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+$home-fonts-body: 'Junge Regular', 'Times New Roman', Georgia, serif;
+$fonts-code: 'Consolas', 'Courier New', Monaco, 'Lucida Console', monospace;
+
+$color-font-light: #efefef;
+$color-theme: #e67700;
+$color-sub-theme: #49b1f5;
+$color-rgba: rgba(255, 255, 255, 0.1);
+$color-grey: rgba(173, 181, 189, 0.4);
+
+$transition-delay: all 0.5s;
+$color-code-lineno: #90918b;
+$color-background-dark: rgba(0, 0, 0, .5);
+$color-background-light: rgba(255, 255, 255, .1);
+
+font {
+    color: #fff;
+    background: #1d953f;
+    padding: 3px;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+}

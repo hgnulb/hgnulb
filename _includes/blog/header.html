@@ -1,0 +1,20 @@
+<header class="the-header">
+    <div class="unit-head">
+        <nav class="nav-global">
+            <ul>
+                <li class="logo">
+                    <button class="btn-menu" data-tippy-content="{{ site.data.i18n[site.lang].menu }}"><i class="fas fa-bars"></i></button>
+                    <a href="{{ site.paths.blog | relative_url | prepend: site.url }}">{{ site.title }}</a>
+                    <!--[if !IE]>-->
+                    <button class="btn-search" data-tippy-content="{{ site.data.i18n[site.lang].search }}"><i class="fas fa-search"></i></button>
+                    <!--<![endif]-->
+                </li>
+                <li><a href="{{ site.paths.categories | relative_url | prepend: site.url }}">{{ site.data.i18n[site.lang].categories }}</a></li>
+                <li><a href="{{ site.paths.tags | relative_url | prepend: site.url }}">{{ site.data.i18n[site.lang].tags }}</a></li>
+                <!--[if !IE]>-->
+                <li><a class="btn-search">{{ site.data.i18n[site.lang].search }}</a></li>
+                <!--<![endif]-->
+            </ul>
+        </nav>
+    </div>
+</header>

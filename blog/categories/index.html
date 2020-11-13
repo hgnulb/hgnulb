@@ -1,0 +1,17 @@
+---
+layout: page
+title: Categories
+header: Posts By Category
+description: "This page shows a list of categories used in this blog."
+group: navigation
+---
+{% capture categories %}
+    {% for category in site.categories %}
+        {{ category[0] | replace:' ','&#32;' }}
+    {% endfor %}
+{% endcapture %}{% assign sorted_categories = categories | split:' ' | sort_natural %}
+<div class="tag_box">{% assign categories_list = sorted_categories %}{% include helpers/categories_list %}</div>
+{% for category in sorted_categories %}{% assign actual_category_name = category | replace:'&#32;',' ' %}
+<h3 id="{{ actual_category_name | replace:' ','-' | replace:'#','sharp' }}">{{ actual_category_name }}</h3>
+<ul class="post-list">{% assign pages_list = site.categories[actual_category_name] %}{% include helpers/pages_list %}</ul>
+{% endfor %}

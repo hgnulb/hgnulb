@@ -1,0 +1,14 @@
+@import url("//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css");
+
+.task-list {
+    .task-list-item {
+        list-style: none;
+        input {
+            margin-left: 8px !important;
+            margin-right: 8px !important;
+            vertical-align:middle;
+        }
+    }
+
+    padding: 0 !important;
+}

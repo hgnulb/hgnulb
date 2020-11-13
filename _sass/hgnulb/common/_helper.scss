@@ -1,0 +1,129 @@
+@import "variables";
+
+.hidden {
+    display: none;
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    height: 1px;
+    border: none;
+    border-top: 1px dashed $color-grey;
+}
+
+#page:after,
+#page:before,
+.tag_box:after,
+.tag_box:before,
+.unit-inner:after,
+.unit-inner:before {
+    display: table;
+    content: '';
+}
+
+#page:after,
+.tag_box:after,
+.unit-inner:after {
+    clear: both;
+}
+
+#page,
+.tag_box,
+.unit-inner {
+    *zoom: 1;
+}
+
+.left {
+    float: left;
+    *display: inline;
+}
+
+.right {
+    float: right;
+    *display: inline;
+}
+
+input:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+input::-ms-clear,
+input::-webkit-search-cancel-button,
+input::-webkit-search-decoration,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+    display: none;
+}
+
+::-moz-selection {
+    background-color: $color-grey;
+}
+
+::selection {
+    background-color: $color-grey;
+}
+
+pre {
+    tab-size: 4;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+}
+
+@mixin tags() {
+    div {
+        line-height: normal;
+        display: inline-block;
+        vertical-align: middle;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        a {
+            button {
+                span {
+                    padding: 1px 5px;
+                    border-radius: 20px;
+                    background-color: $color-rgba;
+                }
+            }
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+@mixin a-hover() {
+    a {
+        margin: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: $color-font-light;
+        cursor: pointer;
+        position: relative;
+        transition: $transition-delay;
+
+        &:hover {
+            color: $color-theme;
+            -webkit-transition: $transition-delay;
+            -moz-transition: $transition-delay;
+            -o-transition: $transition-delay;
+            transition: $transition-delay;
+
+            &:after {
+                width: 100%;
+                -webkit-transition: $transition-delay;
+                -moz-transition: $transition-delay;
+                -o-transition: $transition-delay;
+                transition: $transition-delay;
+            }
+        }
+    }
+}
+
+a:hover,
+a:link,
+a:visited {
+    text-decoration: none;
+}

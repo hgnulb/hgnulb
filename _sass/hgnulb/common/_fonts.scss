@@ -1,0 +1,13 @@
+@import "variables";
+
+@font-face {
+    font-family: 'Junge Regular';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('#{$github-url}/assets/libs/fonts/junge-regular-webfont.eot');
+    src: url('#{$github-url}/assets/libs/fonts/junge-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('#{$github-url}/assets/libs/fonts/junge-regular-webfont.woff') format('woff'),
+    url('#{$github-url}/assets/libs/fonts/junge-regular-webfont.ttf') format('truetype'),
+    url('#{$github-url}/assets/libs/fonts/junge-regular-webfont.svg#jungeregular') format('svg');
+}

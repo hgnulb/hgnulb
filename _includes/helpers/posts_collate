@@ -1,0 +1,18 @@
+{% capture year_numbers %}{% assign counter = 0 %}
+{% for post in site.posts %}
+    {% assign thisyear = post.date | date: "%Y" %}{% assign prevyear = post.previous.date | date: "%Y" %}{% assign counter = counter | plus: 1 %}
+    {% if thisyear != prevyear %}{{ counter }}{% assign counter = 0 %}{% endif %}
+{% endfor %}
+{% endcapture %}{% assign year_numbers_arr = year_numbers | split:' ' %}{% assign index = 0 %}
+{% for post in posts_collate %}{% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}{% if current_year != '' and {{this_year}} != current_year %}{% if forloop.first != true %}</ul>{% endif %}
+
+<h2 class='year'>{{ this_year }} - 共{{ year_numbers_arr[index] }}篇</h2>
+{% assign index = index | plus: 1 %}<ul class="post-list">{% endif %}
+    <li>
+        <a href="{{ post.url | relative_url | prepend: site.url }}">{{ post.title }}</a>
+        {% if post.last_updated %}
+        <span data-tippy-content="{{ site.data.i18n[site.lang].last_updated }}: {{ post.last_updated | date: '%F' }} {{ post.last_updated | date: '%T' }}" class="date">{{ post.date | date: "%F" }}</span>
+        {% else %}<span class="date">{{ post.date | date: "%F" }}</span>{% endif %}
+    </li>
+{% if forloop.last %}</ul>{% endif %}{% assign current_year = {{this_year}} %}{% endfor %}
+{% assign posts_collate = nil %}

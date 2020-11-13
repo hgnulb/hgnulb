@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="{{ site.lang }}">
+<!--<![endif]-->
+
+<head>
+{% include common/meta.html %}
+<link href='{{ site.paths.gh-pages }}/assets/libs/fullPage.js/fullpage.min.css' rel="stylesheet" type="text/css">
+<link href='{{ site.baseurl }}/assets/libs/stylesheets/home.css' rel="stylesheet" type="text/css">
+{% include common/libraries.html %}
+</head>
+
+<body>
+<canvas id="universe"></canvas>
+{% include common/notices.html %}
+<div id="fullpage">
+    <div id="section0" class="section">
+        <div class="headings animate__animated animate__bounce">
+            {% if site.author.name %}<h1>{{ site.author.name }}</h1>{% endif %}
+            {% if site.author.profile %}<h2>{{ site.author.profile }}</h2>{% endif %}
+            {% if site.author.job_title %}<h3>{{ site.author.job_title }}</h3>{% endif %}
+        </div>
+        <a class="btn-continue animate__animated animate__bounce" data-tippy-content="{{ site.data.i18n[site.lang].more }}" onclick="fullpage_api.moveSectionDown();"><i class="fas fa-chevron-down"></i></a>
+    </div>
+
+    <div id="section1" class="section">
+        <h1 class="animate__animated hidden">
+            <a class="btn-enter btn-light" data-tippy-content="{{ site.data.i18n[site.lang].enter_blog }}" href="{{ site.paths.blog | relative_url | prepend: site.url }}">{{ site.data.i18n[site.lang].enter_blog }}</a>
+        </h1>
+        <div class="social-links animate__animated hidden">
+            {% if site.author.email %}<a class="btn-light ico-gmail" href="mailto:{{ site.author.email }}" rel="me" target="_blank" data-tippy-content="email"></a>{% endif %}{% for link in site.author.social_links %}
+            {% if link.url %}<a class="btn-light ico-{{ link.name }}" href="{{ link.url }}" rel="me" target="_blank" data-tippy-content="{{ link.name }}"></a>{% endif %}{% endfor %}
+        </div>
+    </div>
+</div>
+{% include home/scripts.html %}
+</body>
+</html>
