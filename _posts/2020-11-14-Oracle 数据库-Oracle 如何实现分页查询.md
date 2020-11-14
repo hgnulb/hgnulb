@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "数据库-Oracle 如何实现分页查询"
+title: "Oracle 数据库-Oracle 如何实现分页查询"
 permalink: /blog/80092701
 categories: [数据库]
 tags: [Oracle 数据库]

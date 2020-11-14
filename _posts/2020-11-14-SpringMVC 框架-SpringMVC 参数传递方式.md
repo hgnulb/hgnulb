@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "常用框架-SpringMVC 参数传递方式"
+title: "SpringMVC 框架-SpringMVC 参数传递方式"
 permalink: /blog/15650696
 categories: [常用框架]
 tags: [SpringMVC 框架]

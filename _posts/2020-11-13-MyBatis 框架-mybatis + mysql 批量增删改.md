@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "MySQL 数据库-mybatis + mysql 批量增删改"
+title: "MyBatis 框架-mybatis + mysql 批量增删改"
 permalink: /blog/91035838
-categories: [数据库, 常用框架]
-tags: [MySQL 数据库, MyBatis 框架]
+categories: [常用框架]
+tags: [MyBatis 框架]
 date: 2020-11-13 22:09:34
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "数据库-Windows 上 MySQL 安装教程"
+title: "MySQL 数据库-Windows 上 MySQL 安装教程"
 permalink: /blog/69259997
 categories: [数据库]
 tags: [MySQL 数据库]

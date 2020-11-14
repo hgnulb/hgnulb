@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "数据库-Oracle 11g 安装教程"
+title: "Oracle 数据库-Oracle 11g 安装教程"
 permalink: /blog/50663116
 categories: [数据库]
 tags: [Oracle 数据库]
