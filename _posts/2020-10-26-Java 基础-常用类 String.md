@@ -214,6 +214,25 @@ public class Test {
 i = 10, j = 20
 </p></blockquote>
 </div>
+```java
+public class Test {
+    public static void main(String[] args) {
+        System.out.print('A' + 'B' + " ");
+        StringBuffer sb = new StringBuffer('A');
+        sb.append('B');
+        sb.append('C');
+        System.out.println(sb);
+    }
+}
+```
+
+<a class="button show-hidden">点击查看结果</a>
+
+<div class="hidden">
+<blockquote><p><b>参考答案</b>
+131 BC
+</p></blockquote>
+</div>
 
 ## 推荐阅读
 

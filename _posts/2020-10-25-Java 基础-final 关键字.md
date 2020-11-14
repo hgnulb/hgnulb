@@ -47,6 +47,24 @@ date: 2020-10-25 22:56:31
 - final 的含义是什么？
 - 成员变量都是 final 修饰的话，如何进行赋值？
 
+以下关于 final 关键字说法正确的是（多选）
+
+> A. final 是 java 中的修饰符，可以修饰类、接口、抽象类、方法和属性
+>
+> B. final 修饰的类肯定不能被继承
+>
+> C. final 修饰的方法不能被重载
+>
+> D. final 修饰的变量不允许被再次赋值
+
+<a class="button show-hidden">点击查看结果</a>
+
+<div class="hidden">
+<blockquote><p><b>参考答案</b>
+BD
+</p></blockquote>
+</div>
+
 ## final 关键字总结
 
 > <font>下面总结了一些使用 final 关键字的好处：</font>
