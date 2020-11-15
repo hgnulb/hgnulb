@@ -15,9 +15,7 @@ Java 平台中的任何一个对象都有唯一一个与之关联的锁。这种
 
 内部锁是通过 synchronized 关键字实现的。synchronized 关键字可以用来**修饰方法以及代码块**（花括号 “{}” 包裹的代码）。
 
-synchronized 关键字修饰的方法就被称为同步方法（Synchronized Method）。
-
-synchronized 修饰的静态方法就被称为**静态同步方法**，synchronized 修饰的实例方法就被称为**实例同步方法**。同步方法的整个方法体就是一个临界区。
+synchronized 关键字修饰的方法就被称为同步方法（Synchronized Method）。synchronized 修饰的静态方法就被称为**静态同步方法**，synchronized 修饰的实例方法就被称为**实例同步方法**。同步方法的整个方法体就是一个临界区。
 
 synchronized 关键字修饰的代码块被称为同步块（Synchronized Block），其语法如下所示：
 
