@@ -13,6 +13,8 @@ date: 2020-11-03 22:16:53
 
 ![image-20201111134334051](../assets/post-list/img/image-20201111134334051.png)
 
+![image-20201115212248874](../assets/post-list/img/image-20201115212248874.png)
+
 - singleton：单例，默认值，调用 getBean 方法返回是同一个对象，实例会被缓存起来，效率比较高，当一个 bean 被标识为 singleton 时候，spring 的 IOC 容器中只会存在一个该 bean。
 - prototype：多例，调用 getBean 方法创建不同的对象，会频繁的创建和销毁对象造成很大的开销。
 
