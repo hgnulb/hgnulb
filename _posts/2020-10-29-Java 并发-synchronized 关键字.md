@@ -515,20 +515,18 @@ synchronized (AccountingSync.class) {
 ## synchronized 关键字常见面试题
 
 - [ ] Java 中有哪些锁？synchronized 与 Lock 有哪些区别？什么是公平锁和非公平锁？他们的底层怎么实现的？
-- [ ] 谈谈 synchronized 关键字的理解？
-- [ ] synchronized 能否锁静态方法，锁的升降级。synchronized 修饰同一个类的两个静态方法同步吗，为什么。
+- [ ] 谈谈 synchronized 关键字的理解？synchronized 的实现，锁的升级过程。synchronized 什么情况下会释放锁?
+- [ ] synchronized 能否锁静态方法，synchronized 修饰同一个类的两个静态方法同步吗，为什么。
 - [ ] 如果一个对象有多个方法加了 synchronized，那么该对象有几把锁。【一把锁】
 - [ ] synchronized 分别修饰在实例方法上和静态方法上，多线程并发时是否会竞争锁？synchronized 修饰在方法上和代码块上有什么区别，底层是怎么实现的？
 - [ ] Lock 接口的实现类 ReentrantLock 和 synchronized 有什么区别？ReentrantReadWriteLock 呢？
-- [ ] synchronized 什么情况下会释放锁?
-- [ ] 说下 synchronized 的用法，说下JDK 对 synchronized 的优化？
-- [ ] synchronized 的实现，锁的升级过程。
+- [ ] 说下 synchronized 的用法，说下 JDK 对 synchronized 的优化？
 - [ ] synchronized 关键字的作用、原理、锁升级、锁粗化、锁消除、偏向锁、轻量级锁、重量级锁。
 - [ ] 为什么要用 synchronized？原理？效率？
 - [ ] synchronized 是可重入锁么。synchronized 为什么说他比较重。
 - [ ] volatile、synchronized 的用法，比如 synchronized 在静态方法和普通方法上面时，能否同时进入？
 - [ ] volatile、synchronized、Lock 的区别？
-- [ ] 说说你用到 volatile 和 synchronized 的一些场景。（说了个双重校验单例模式 DCL）
+- [ ] 说说你用到 volatile 和 synchronized 的一些场景。(说了个双重校验单例模式 DCL)
 - [ ] synchronized 的底层实现原理以及和 volatile 的区别？他们能保证原子性吗？能保证可见性吗？
 - [ ] CAS 和 synchronized 有什么区别？都用 synchronized 不行么？
 - [ ] 说一下 Java 的内存模型？说一下 volatile 关键字？他的原理是什么？volatile 是线程安全的吗？说一下 volatile 和 synchronized 这两个关键字的区别？
