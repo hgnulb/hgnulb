@@ -11,17 +11,17 @@ date: 2020-10-29 21:39:34
 {:toc .toc}
 ## synchronized 关键字概述
 
-Java 平台中的任何一个对象都有唯一一个与之关联的锁。这种锁被称为监视器（Monitor）或者内部锁（Intrinsic Lock）。内部锁是一种排他锁，它能够保障**原子性、可见性和有序性**。
+Java 平台中的任何一个对象都有唯一一个与之关联的锁。这种锁被称为监视器或者内部锁。内部锁是一种排他锁，它能够保障**原子性、可见性和有序性**。
 
-内部锁是通过 synchronized 关键字实现的。synchronized 关键字可以用来**修饰方法以及代码块**（花括号 “{}” 包裹的代码）。
+内部锁是通过 synchronized 关键字实现的。synchronized 关键字可以用来**修饰方法以及代码块**。
 
-synchronized 关键字修饰的方法就被称为同步方法（Synchronized Method）。synchronized 修饰的静态方法就被称为**静态同步方法**，synchronized 修饰的实例方法就被称为**实例同步方法**。同步方法的整个方法体就是一个临界区。
+synchronized 关键字修饰的方法就被称为同步方法。synchronized 修饰的静态方法就被称为**静态同步方法**，synchronized 修饰的实例方法就被称为**实例同步方法**。同步方法的整个方法体就是一个临界区。
 
-synchronized 关键字修饰的代码块被称为同步块（Synchronized Block），其语法如下所示：
+synchronized 关键字修饰的代码块被称为同步块，其语法如下所示：
 
 ```java
 synchronized(锁句柄){
-    // 在此代码块中访问共享数据
+    
 }
 ```
 
@@ -339,23 +339,17 @@ class Number {
 
 ## synchronized 的使用
 
-> 普通方法和代码块中使用 this 是同一个监视器（锁），即某个具体调用该代码的对象。
+> 普通方法和代码块中使用 this 是同一个监视器(锁)，即某个具体调用该代码的对象。
 >
 > 静态方法和代码块中使用该类的 class 对象是同一个监视器，任何该类的对象调用该段代码时都是在争夺同一个监视器的锁定。
 >
-> **注意:**
->
-> 作为锁句柄的变量通常采用 private final 修饰，如：private final Object lock = new Object();
+> **注意：**作为锁句柄的变量通常采用 private final 修饰，如：private final Object lock = new Object();
 
 ```java
 public class SynchronizedTest implements Runnable {
-    //共享资源
-    static int i = 0;
+    private static int i = 0;
 
-    /**
-     * synchronized 修饰实例方法
-     */
-    public synchronized void increase() {
+    public static synchronized void increase() {
         i++;
     }
 
@@ -367,9 +361,8 @@ public class SynchronizedTest implements Runnable {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        SynchronizedTest test = new SynchronizedTest();
-        Thread t1 = new Thread(test);
-        Thread t2 = new Thread(test);
+        Thread t1 = new Thread(new SynchronizedTest());
+        Thread t2 = new Thread(new SynchronizedTest());
         t1.start();
         t2.start();
         t1.join();
@@ -479,44 +472,11 @@ public class SynchronizedTest {
 
 ```java
 public class SynchronizedTest implements Runnable {
-    //共享资源
-    static int i = 0;
-
-    /**
-     * synchronized 修饰实例方法
-     */
-    public static synchronized void increase() {
-        i++;
-    }
+    private static final SynchronizedTest instance = new SynchronizedTest();
+    private static int i = 0;
 
     @Override
     public void run() {
-        for (int j = 0; j < 10000000; j++) {
-            increase();
-        }
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        Thread t1 = new Thread(new SynchronizedTest());
-        Thread t2 = new Thread(new SynchronizedTest());
-        t1.start();
-        t2.start();
-        t1.join();
-        t2.join();
-        System.out.println(i);
-    }
-}
-```
-
-```java
-public class SynchronizedTest implements Runnable {
-    static SynchronizedTest instance = new SynchronizedTest();
-    static int i = 0;
-
-    @Override
-    public void run() {
-        //省略其他耗时操作....
-        //使用同步代码块对变量i进行同步操作,锁对象为instance
         synchronized (instance) {
             for (int j = 0; j < 10000000; j++) {
                 i++;
@@ -537,7 +497,7 @@ public class SynchronizedTest implements Runnable {
 ```
 
 ```java
-//this,当前实例对象锁
+//this当前实例对象锁
 synchronized (this) {
     for (int j = 0; j < 1000000; j++) {
         i++;
@@ -559,23 +519,23 @@ synchronized (AccountingSync.class) {
 - [ ] synchronized 修饰同一个类的两个静态方法同步吗，为什么。
 - [ ] synchronized 分别修饰在实例方法上和静态方法上，多线程并发时是否会竞争锁？synchronized 修饰在方法上和代码块上有什么区别，底层是怎么实现的？Lock 接口的实现类 ReentrantLock 和 synchronized 有什么区别？ReentrantReadWriteLock 呢？
 - [ ] synchronized 什么情况下会释放锁?
-- [ ] 如果一个对象有多个方法加了 synchronized，那么该对象有几把锁。
+- [ ] 如果一个对象有多个方法加了 synchronized，那么该对象有几把锁。【一把锁】
 
 > **对象锁：**
 > synchronized 同步代码块(非静态变量、非类对象)
 > synchronized 同步方法(修饰非静态方法)
+>
+> **类锁：**
+>
 > synchronized 同步代码块(静态变量、类对象)
 > synchronized 同步方法(修饰静态方法)
 
 - [ ] synchronized 和 Lock 的区别。
 - [ ] synchronized 和 ReentrantLock 的异同？
 - [ ] synchronized 和 ReentrantLock 的实现原理以及区别？
-- [ ] synchronized、ReentrantLock 底层实现。
-- [ ] synchronized 关键字原理。
+- [ ] synchronized 和 ReentrantLock 的底层实现。
 - [ ] synchronized 的实现原理。
-- [ ] 锁 synchronized 和 ReentrantLock 实现原理。
 - [ ] synchronized 和 java.util.concurrent.locks.Lock 的比较。
-- [ ] synchronized 原理，ReentrantLock 原理，区别。
 - [ ] 有看过 synchronized 的源码吗？
 - [ ] 谈谈 synchronized 关键字的理解？
 - [ ] synchronized 底层相关，跟 ReentrantLock 的区别？
@@ -585,7 +545,7 @@ synchronized (AccountingSync.class) {
 - [ ] synchronized 的锁升级过程讲一下。
 - [ ] synchronized 能否锁静态方法，锁的升降级。
 - [ ] synchronized 关键字的作用、原理、锁升级、锁粗化、锁消除。
-- [ ] synchronized 了解偏向锁、轻量级锁、重量级锁的概念以及升级机制、以及和 ReentrantLock 的区别。
+- [ ] synchronized 了解偏向锁、轻量级锁、重量级锁的概念以及升级机制和 ReentrantLock 的区别。
 - [ ] Java 中的锁有哪几种？synchronized 的特性和底层实现？ReentrantLock 了解么？AQS 锁了解么？
 - [ ] Java 中有哪些锁？synchronized 与 Lock 有哪些区别？什么是公平锁和非公平锁？他们的底层怎么实现的？
 - [ ] synchronized 用过么，具体用法，同步作用域。
