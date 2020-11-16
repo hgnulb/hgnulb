@@ -25,7 +25,7 @@ synchronized(锁句柄){
 }
 ```
 
-**注意:** 作为锁句柄的变量通常采用 private final 修饰，如：private final Object lock = new Object();
+**注意：** 作为锁句柄的变量通常采用 private final 修饰，如：private final Object lock = new Object();
 
 ### synchronized 实例方法和 synchronized 代码块
 
@@ -57,7 +57,7 @@ void method() {
 
 ![image-20201029223138994](../assets/post-list/img/image-20201029223138994.png)
 
-## synchronized 线程八锁
+## synchronized 关键字线程八锁
 
 ![image-20201029220045903](../assets/post-list/img/image-20201029220045903.png)
 
