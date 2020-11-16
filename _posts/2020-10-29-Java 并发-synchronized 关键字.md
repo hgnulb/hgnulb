@@ -560,7 +560,7 @@ synchronized (AccountingSync.class) {
 - [ ] synchronized 底层实现原理以及和 volatile 的区别？
 - [ ] synchronized 和 volatile 的区别是什么？他们能保证原子性吗？能保证可见性吗？
 - [ ] CAS 和 synchronized 有什么区别？都用 synchronized 不行么？
-- [ ] 说一下 Java 的内存模型？说一下 volatile关键字？他的原理是什么？volatile是线程安全的吗？说一下 volatile 和 synchronized 这两个关键字的区别？
+- [ ] 说一下 Java 的内存模型？说一下 volatile 关键字？他的原理是什么？volatile 是线程安全的吗？说一下 volatile 和 synchronized 这两个关键字的区别？
 
 ## synchronized 关键字参考资料
 
