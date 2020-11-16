@@ -337,7 +337,7 @@ class Number {
 - [ ] 非公平锁，在等待获取锁的过程中不可被中断。
 - [ ] 互斥性，被 synchronized 修饰的方法同时只能由一个线程执行。
 
-## synchronized 的使用
+## synchronized 关键字的使用
 
 > 普通方法和代码块中使用 this 是同一个监视器(锁)，即某个具体调用该代码的对象。
 >
@@ -518,7 +518,8 @@ synchronized (AccountingSync.class) {
 - [ ] 谈谈 synchronized 关键字的理解？
 - [ ] synchronized 能否锁静态方法，锁的升降级。synchronized 修饰同一个类的两个静态方法同步吗，为什么。
 - [ ] 如果一个对象有多个方法加了 synchronized，那么该对象有几把锁。【一把锁】
-- [ ] synchronized 分别修饰在实例方法上和静态方法上，多线程并发时是否会竞争锁？synchronized 修饰在方法上和代码块上有什么区别，底层是怎么实现的？Lock 接口的实现类 ReentrantLock 和 synchronized 有什么区别？ReentrantReadWriteLock 呢？
+- [ ] synchronized 分别修饰在实例方法上和静态方法上，多线程并发时是否会竞争锁？synchronized 修饰在方法上和代码块上有什么区别，底层是怎么实现的？
+- [ ] Lock 接口的实现类 ReentrantLock 和 synchronized 有什么区别？ReentrantReadWriteLock 呢？
 - [ ] synchronized 什么情况下会释放锁?
 - [ ] 说下 synchronized 的用法，说下JDK 对 synchronized 的优化？
 - [ ] synchronized 的实现，锁的升级过程。
