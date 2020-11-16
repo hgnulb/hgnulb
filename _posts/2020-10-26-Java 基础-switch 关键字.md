@@ -63,6 +63,10 @@ public class SwitchString {
 
 ## switch 常见用法讲解
 
+![image-20201116212050217](../assets/post-list/img/image-20201116212050217.png)
+
+![image-20201116212130839](../assets/post-list/img/image-20201116212130839.png)
+
 在 switch 语句中，表达式的值不能是 null，否则会在运行时抛出 NullPointerException。
 
 ```java
@@ -95,6 +99,8 @@ public class SwitchString {
 case 值不允许重复，如果 case 值重复，则会产生编译错误。
 
 ![image-20201101161653049](../assets/post-list/img/image-20201101161653049.png)
+
+![image-20201116212113207](../assets/post-list/img/image-20201116212113207.png)
 
 switch 表达式不支持 long 类型。
 
@@ -822,7 +828,6 @@ D
 </div>
 ## 推荐阅读
 
-- [Java switch 详解](https://blog.csdn.net/machao0903/article/details/76187820)
 - [https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html)
 - [https://www.javatpoint.com/java-switch](https://www.javatpoint.com/java-switch)
 - [http://tutorials.jenkov.com/java/switch.html](http://tutorials.jenkov.com/java/switch.html)
