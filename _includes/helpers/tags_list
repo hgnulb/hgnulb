@@ -1,12 +1,12 @@
 {% if tags_list.first[0] == null %}{% for tag in tags_list %}{% assign actual_tag_name = tag | replace:'&#32;',' ' %}
     <div>
-        <a onclick="changePoint('{{ site.paths.tags | relative_url | prepend: site.url }}', '#{{ actual_tag_name | replace:' ','-' | replace:'#','sharp' }}')" data-tippy-content="{{ actual_tag_name }}">
+        <a onclick="changePoint('{{ site.paths.tags | relative_url }}', '#{{ actual_tag_name | replace:' ','-' | replace:'#','sharp' }}')" data-tippy-content="{{ actual_tag_name }}">
             <button>{{ actual_tag_name }} <span>{{ site.tags[actual_tag_name].size }}</span></button>
         </a>
     </div>
 {% endfor %}{% else %}{% for tag in tags_list %}{% assign actual_tag_name = tag[0] | replace:'&#32;',' ' %}
     <div>
-        <a onclick="changePoint('{{ site.paths.tags | relative_url | prepend: site.url }}', '#{{ actual_tag_name | replace:' ','-' | replace:'#','sharp' }}')" data-tippy-content="{{ actual_tag_name }}">
+        <a onclick="changePoint('{{ site.paths.tags | relative_url }}', '#{{ actual_tag_name | replace:' ','-' | replace:'#','sharp' }}')" data-tippy-content="{{ actual_tag_name }}">
             <button>{{ actual_tag_name }} <span>{{ tag[1].size }}</span></button>
         </a>
     </div>

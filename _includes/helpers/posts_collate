@@ -9,7 +9,7 @@
 <h2 class='year'>{{ this_year }} - 共{{ year_numbers_arr[index] }}篇</h2>
 {% assign index = index | plus: 1 %}<ul class="post-list">{% endif %}
     <li>
-        <a href="{{ post.url | relative_url | prepend: site.url }}">{{ post.title }}</a>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         {% if post.last_updated %}
         <span data-tippy-content="{{ site.data.i18n[site.lang].last_updated }}: {{ post.last_updated | date: '%F' }} {{ post.last_updated | date: '%T' }}" class="date">{{ post.date | date: "%F" }}</span>
         {% else %}<span class="date">{{ post.date | date: "%F" }}</span>{% endif %}

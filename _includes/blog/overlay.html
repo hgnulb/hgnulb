@@ -4,9 +4,9 @@
         <a class="btn-close"><i class="fas fa-times"></i></a>
         <div class="results">
             <ul>
-                <li><a href="{{ site.paths.categories | relative_url | prepend: site.url }}">{{ site.data.i18n[site.lang].categories }}</a></li>
-                <li><a href="{{ site.paths.tags | relative_url | prepend: site.url }}">{{ site.data.i18n[site.lang].tags }}</a></li>
-                <li><a href="{{ site.paths.blog | relative_url | prepend: site.url }}">{{ site.data.i18n[site.lang].about }}</a></li>
+                <li><a href="{{ site.paths.categories | relative_url }}">{{ site.data.i18n[site.lang].categories }}</a></li>
+                <li><a href="{{ site.paths.tags | relative_url }}">{{ site.data.i18n[site.lang].tags }}</a></li>
+                <li><a href="{{ site.paths.blog | relative_url }}">{{ site.data.i18n[site.lang].about }}</a></li>
             </ul>
         </div>
     </div>

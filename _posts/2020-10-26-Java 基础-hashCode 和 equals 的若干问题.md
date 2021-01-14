@@ -20,9 +20,9 @@ date: 2020-10-26 13:23:28
 > • hashCode 主要用于提升查询效率提高哈希表性能，来确定在散列结构中对象的存储地址。
 > • 重写 equals() 必须重写 hashCode()。
 > • 哈希存储结构中，添加元素重复性校验的标准就是先检查 hashCode 值，后判断 equals()。
-> • <font>两个对象 equals() 相等，hashCode() 必定相等。</font>
-> • <font>两个对象 hashCode() 不等，equals() 必定也不等。</font>
-> • <font>两个对象 hashCode() 相等，对象不一定相等，需要通过 equals() 进一步判断。</font>
+> • 两个对象 equals() 相等，hashCode() 必定相等。
+> • 两个对象 hashCode() 不等，equals() 必定也不等。
+> • 两个对象 hashCode() 相等，对象不一定相等，需要通过 equals() 进一步判断。
 
 ## 常考面试题
 

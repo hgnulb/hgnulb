@@ -1,6 +1,6 @@
 {% for node in pages_list %}{% if node.title != null %}
     <li>
-        <a href="{{node.url | relative_url | prepend: site.url }}">{{node.title}}</a>
+        <a href="{{ node.url | relative_url }}">{{ node.title }}</a>
         <span class="date">{{ node.date | date: "%F" }}</span>
     </li>
 {% endif %}{% endfor %}{% assign pages_list = nil %}

@@ -15,6 +15,17 @@ jekyll serve --watch
 bundle exec jekyll serve
 ```
 
+```shell
+sudo gem install bundler jekyll
+sudo gem install wdm
+
+sudo bundle install
+sudo bundle update
+
+sudo jekyll serve --watch
+sudo bundle exec jekyll serve
+```
+
 # 清空博客所有历史提交记录
 
 ```shell

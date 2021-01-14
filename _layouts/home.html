@@ -35,7 +35,7 @@
 
     <div id="section1" class="section">
         <h1 class="animate__animated hidden">
-            <a class="btn-enter btn-light" data-tippy-content="{{ site.data.i18n[site.lang].enter_blog }}" href="{{ site.paths.blog | relative_url | prepend: site.url }}">{{ site.data.i18n[site.lang].enter_blog }}</a>
+            <a class="btn-enter btn-light" data-tippy-content="{{ site.data.i18n[site.lang].enter_blog }}" href="{{ site.paths.blog | relative_url }}">{{ site.data.i18n[site.lang].enter_blog }}</a>
         </h1>
         <div class="social-links animate__animated hidden">
             {% if site.author.email %}<a class="btn-light ico-gmail" href="mailto:{{ site.author.email }}" rel="me" target="_blank" data-tippy-content="email"></a>{% endif %}{% for link in site.author.social_links %}
