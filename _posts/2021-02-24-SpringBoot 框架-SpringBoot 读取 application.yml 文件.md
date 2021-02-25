@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "SpringBoot 框架-SpringBoot 读取 application.yml 文件"
-permalink: /blog/®
+permalink: /blog/01969972
 categories: [常用框架]
 tags: [SpringBoot 框架]
 date: 2021-02-24 19:31:46
